@@ -24,12 +24,16 @@ function Phrase(content) {
   }
 
   this.letters = function letters() {
-    const letterRegex = /[a-z]/i;
-    return (this.content.match(/[a-z]/gi) || []).join("");
+    const lettersRegex = /[a-z]/gi;
+    return (this.content.match(lettersRegex) || []).join("");
   }
 
   this.palindrome = function palindrome() {
-    return this.processedContent() === this.processedContent().reverse();
+    if( this.processedContent() ) {
+      return this.processedContent() === this.processedContent().reverse();
+    } else {
+      return false;
+    }
   }
 
   this.louder = function louder() {
