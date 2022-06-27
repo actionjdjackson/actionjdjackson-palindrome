@@ -20,16 +20,22 @@ function Phrase(content) {
   }
 
   this.processedContent = function processedContent() {
-    return this.processor(this.content);
+    return this.processor(this.letters());
+  }
+
+  this.letters = function letters() {
+    const letterRegex = /[a-z]/i;
+    return (this.content.match(/[a-z]/gi) || []).join("");
   }
 
   this.palindrome = function palindrome() {
     return this.processedContent() === this.processedContent().reverse();
   }
+
   this.louder = function louder() {
     return this.content = this.content.toUpperCase();
-  };
-}
+  }
+};
 
 function TranslatedPhrase(content, translation) {
   this.content = content;
